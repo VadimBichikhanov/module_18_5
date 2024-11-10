@@ -1,0 +1,37 @@
+<!-- templates/fifth_task/registration_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <h2>Регистрация</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Введите логин:</label><br>
+        <input type="text" id="username" name="username" maxlength="30" required><br><br>
+
+        <label for="password">Введите пароль:</label><br>
+        <input type="password" id="password" name="password" minlength="8" required><br><br>
+
+        <label for="repeat_password">Повторите пароль:</label><br>
+        <input type="password" id="repeat_password" name="repeat_password" minlength="8" required><br><br>
+
+        <label for="age">Введите свой возраст:</label><br>
+        <input type="number" id="age" name="age" maxlength="3" required><br><br>
+
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+
+    {% if info.error %}
+        <p style="color: red;">{{ info.error }}</p>
+    {% endif %}
+
+    {% if info.success %}
+        <p style="color: green;">{{ info.success }}</p>
+    {% endif %}
+
+    <p><a href="{% url 'choice_page' %}">Вернуться к выбору действия</a></p>
+</body>
+</html>
